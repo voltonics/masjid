@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Halaman Tidak Ditemukan - Masjid Jami Al-Muthma'innah{% endblock %}
+
+{% block content %}
+<section class="section" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+    <div class="container">
+        <h1 style="font-size: 6rem; color: var(--primary-light); margin-bottom: 1rem;">404</h1>
+        <h2 style="margin-bottom: 2rem;">Afwan, Halaman Tidak Ditemukan</h2>
+        <p style="color: var(--text-muted); margin-bottom: 3rem;">Halaman yang Anda cari mungkin telah dipindahkan atau tidak lagi tersedia.</p>
+        <a href="{{ url_for('index') }}" class="btn-primary">Kembali ke Beranda</a>
+    </div>
+</section>
+{% endblock %}

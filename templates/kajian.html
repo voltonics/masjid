@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Jadwal Kajian - Masjid Jami Al-Muthma'innah{% endblock %}
+
+{% block content %}
+<header class="blog-header">
+    <div class="container">
+        <h1>Jadwal Kajian Rutin</h1>
+        <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 1rem auto 0;">Jadwal majelis ilmu dan kegiatan pembelajaran keislaman di Masjid Jami Al-Muthma'innah.</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <span class="material-symbols-outlined" style="font-size: 3rem; color: var(--primary-light); margin-bottom: 1rem;">menu_book</span>
+                <h3 class="card-title">Kajian Tafsir Al-Quran</h3>
+                <p style="color: var(--primary-light); font-weight: 500; margin-bottom: 1rem;">Setiap Ba'da Maghrib (Senin)</p>
+                <p style="color: var(--text-muted);">Membahas tafsir Ibnu Katsir dan relevansinya dengan kehidupan modern.</p>
+            </div>
+            <div class="card">
+                <span class="material-symbols-outlined" style="font-size: 3rem; color: var(--primary-light); margin-bottom: 1rem;">balance</span>
+                <h3 class="card-title">Kajian Fiqih Kontemporer</h3>
+                <p style="color: var(--primary-light); font-weight: 500; margin-bottom: 1rem;">Setiap Ba'da Isya (Kamis)</p>
+                <p style="color: var(--text-muted);">Tanya jawab fiqih seputar ibadah, muamalah, dan problematika zaman ini.</p>
+            </div>
+            <div class="card">
+                <span class="material-symbols-outlined" style="font-size: 3rem; color: var(--primary-light); margin-bottom: 1rem;">record_voice_over</span>
+                <h3 class="card-title">Kajian Tahsin & Tajwid</h3>
+                <p style="color: var(--primary-light); font-weight: 500; margin-bottom: 1rem;">Ahad Pagi (06:00 - Selesai)</p>
+                <p style="color: var(--text-muted);">Memperbaiki bacaan Al-Quran bersama asatidz bersanad.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

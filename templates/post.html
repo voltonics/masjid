@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - Masjid Jami Al-Muthma'innah{% endblock %}
+
+{% block content %}
+<article class="post-container">
+    <header class="post-header">
+        <div class="post-meta" style="justify-content: center; margin-bottom: 1.5rem;">
+            <span>{{ post.date.strftime('%d %b %Y') }}</span>
+            <span>&bull;</span>
+            <span style="color: var(--primary-light); font-weight: 500;">{{ post.category }}</span>
+            <span>&bull;</span>
+            <span>Oleh: {{ post.author }}</span>
+        </div>
+        <h1>{{ post.title }}</h1>
+    </header>
+
+    <div class="post-body">
+        {{ post.content | safe }}
+    </div>
+    
+    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color); text-align: center;">
+        <a href="{{ url_for('blog') }}" class="btn-primary" style="background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-color); box-shadow: none;">&larr; Kembali ke Artikel</a>
+    </div>
+</article>
+{% endblock %}

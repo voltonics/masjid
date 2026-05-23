@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Artikel & Kajian - Masjid Jami Al-Muthma'innah{% endblock %}
+
+{% block content %}
+<header class="blog-header">
+    <div class="container">
+        <h1>Artikel & Catatan Kajian</h1>
+        <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 1rem auto 0;">Kumpulan ilmu, hikmah, dan catatan dari berbagai kajian rutin di Masjid Jami Al-Muthma'innah.</p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="container">
+        <div class="blog-grid">
+            {% for post in posts %}
+            <div class="post-card">
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span>{{ post.date.strftime('%d %b %Y') }}</span>
+                        <span style="color: var(--primary-light); font-weight: 500;">{{ post.category }}</span>
+                    </div>
+                    <h2 class="post-title"><a href="{{ url_for('post', slug=post.slug) }}">{{ post.title }}</a></h2>
+                    <p class="post-excerpt">{{ post.summary }}</p>
+                    <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 0.875rem; color: var(--text-muted);">Oleh: {{ post.author }}</span>
+                        <a href="{{ url_for('post', slug=post.slug) }}" style="font-weight: 600; font-size: 0.875rem;">Baca &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 0;">
+                <h3 style="color: var(--text-muted);">Belum ada artikel yang dipublikasikan.</h3>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if total_pages > 1 %}
+        <div class="pagination">
+            {% if page > 1 %}
+            <a href="{{ url_for('blog', page=page-1) }}" class="page-link">&laquo; Prev</a>
+            {% endif %}
+
+            {% for p in range(1, total_pages + 1) %}
+            <a href="{{ url_for('blog', page=p) }}" class="page-link {% if p == page %}active{% endif %}">{{ p }}</a>
+            {% endfor %}
+
+            {% if page < total_pages %}
+            <a href="{{ url_for('blog', page=page+1) }}" class="page-link">Next &raquo;</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
