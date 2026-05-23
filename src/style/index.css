@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kufam:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+    --utama: #F4E9D8;
+    --wrnteks: #1F2A44;
+    --menumobile: #F1F3F7;
+    --teksterang: #F5F7FA;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #1F2A44;
+}
+
+/* NAVBAR */
+
+.atas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    background: var(--utama);
+    padding: 0 30px;
+    z-index: 9;
+    position: fixed;
+    width: 100%;
+}
+
+.atas_title {
+    margin: 0;
+}
+
+.atas_title p {
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 400;
+    color: var(--wrnteks);
+    font-size: 12px;
+}
+
+.atas_title1 {
+    font-family: "Kufam", sans-serif;
+    font-weight: 700;
+    color: var(--wrnteks);
+    transition: .3s ease;
+    display: block;
+}
+
+.atas_title1:hover {
+    transform: translateY(-4px);
+}
+
+/* MENU DESKTOP */
+
+.atas_menu {
+    display: flex;
+    gap: 30px;
+    font-family: "Lexend Deca", sans-serif;
+}
+
+.atas_menu a {
+    transition: .3s;
+    color: var(--wrnteks);
+}
+
+.atas_menu a:hover {
+    transform: translateY(-4px);
+}
+
+/* HAMBURGER */
+
+button.atas_tombol {
+    display: none;
+}
+
+/* HERO */
+
+
+.badan_isi {
+    min-height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background:
+        linear-gradient(to right, rgba(21, 10, 36) 20%, rgba(0, 0, 0, 0)),
+        url("/src/img/vectmasjid.png");
+    background-size: cover;
+    background-position: 
+    center;
+    padding: 0;
+}
+
+.badan_text {
+    font-family: "Lexend Deca", sans-serif;
+    color: var(--teksterang);
+    max-width: 90%;
+    left: 0;
+    margin: 0 0 0 30px;
+}
+
+.badan_text h2 {
+    font-size: 40px;
+}
+
+.badan_text p {
+    font-weight: 200;
+    font-size: 20px;
+
+}
+/* SECTION BADAN 2 (FACILITY) */
+
+.badan_isi2 {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url("/src/img/marmer.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+}
+
+/* CONTAINER CARDS */
+.badan_cards {
+    display: flex;
+    flex-wrap: nowrap;
+    width: min(1170px, 90vw);
+    height: 450px;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+/* INDIVIDUAL CARD */
+.badan_card {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
+    cursor: pointer;
+    transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden;
+    flex-grow: 1;
+    flex-basis: 0;
+    flex-shrink: 1;
+    position: relative;
+    font-family: "Lexend Deca", sans-serif;
+    transition: flex-grow 0.6s cubic-bezier(0.25, 1, 0.5, 0.94)
+}
+
+.badan_card:hover {
+    flex-grow: 3.5;
+}
+
+.badan_card a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.badan_card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(80%);
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.badan_card:hover img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+/* OVERLAY PADA CARD */
+.badan_card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(31, 42, 68, 0.9), transparent 60%);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.badan_card:hover::after {
+    opacity: 1;
+}
+
+/* JUDUL DI TENAH KARTU */
+.badan_card_title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(31, 42, 68, 0.8);
+    color: var(--teksterang);
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    z-index: 5;
+    white-space: nowrap;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(244, 233, 216, 0.3);
+}
+
+.badan_card:hover .badan_card_title {
+    background: var(--utama);
+    color: var(--wrnteks);
+    transform: translate(-50%, -50%) scale(1.1);
+    top: 40%;
+}
+
+/* DESKRIPSI YANG MUNCUL */
+.badan_card_desc {
+    position: absolute;
+    z-index: 6;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    color: var(--teksterang);
+    font-size: 0.9rem;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+    text-align: center;
+    white-space: normal;
+}
+
+.badan_card:hover .badan_card_desc {
+    transform: translateY(0);
+}
+@media (max-width:768px) {
+
+    button.atas_tombol {
+        display: block;
+        background-color: transparent;
+        border: none;
+        transition: 0.3s ease;
+        cursor: pointer;
+        font-size: 30px;
+    }
+
+    button.atas_tombol:hover {
+        transform: translateY(-5px);
+
+    }
+
+    .atas_menu {
+        width: 250px;
+        position: fixed;
+        display: block;
+        top: 80px;
+        height: calc(100vh - 80px);
+        transform: translateX(-100%);
+        transition: 0.3s ease-in-out;
+        padding: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        left: 0;
+        z-index: 1000;
+        background: var(--menumobile);
+    }
+
+    .atas_menu.show {
+        transition: .3s ease-in-out;
+        transform: translateX(0);
+    }
+
+    .atas_menu a {
+        display: block;
+        width: 100%;
+        margin: 10px 50px 10px 0;
+        font-size: 16px;
+        z-index: 999;
+        font-weight: 400;
+        padding: 10px 30px 10px 30px;
+        color: var(--wrnteks);
+    }
+
+    .atas_menu a:hover {
+        border: 0.5px solid #46484a;
+        border-left: none;
+        border-right: none;
+    }
+
+    .badan_isi2 {
+        height: auto;
+        padding: 100px 20px;
+    }
+
+    .badan_cards {
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+        background: transparent;
+        box-shadow: none;
+        overflow: visible;
+    }
+
+    .badan_card {
+        flex: none;
+        width: 100%;
+        height: 200px;
+        border-radius: 15px;
+    }
+
+    .badan_card img {
+        filter: grayscale(0%);
+    }
+
+    .badan_card_desc {
+        transform: translateY(0);
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+}
