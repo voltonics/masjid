@@ -3,19 +3,76 @@
 {% block body_class %}page-index{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
+<!-- Hero Section: Sambutan + Jadwal Sholat -->
 <section class="hero">
-    <div class="container hero-content">
-        <h1 class="hero-title">Masjid Jami Al-Muthma'innah</h1>
-        <p class="hero-subtitle">Membangun peradaban yang tenang, damai, dan penuh rahmat untuk seluruh ummat.</p>
-        <a href="{{ url_for('kajian') }}" class="btn-primary">Lihat Jadwal Kajian</a>
+    <div class="container">
+        <div class="hero-left">
+
+            <!-- Sambutan -->
+            <div class="hero-greeting">
+                <span class="hero-badge">
+                    <span class="material-symbols-outlined">mosque</span>
+                    Masjid Jami Al-Muthma'innah
+                </span>
+                <h1 class="hero-title">
+                    Selamat Datang,<br>
+                    <span class="hero-title-highlight">Saudara Muslim.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Tempat berteduh hati, menuntut ilmu, dan memperkuat ukhuwah islamiyah.
+                    Bersama kita bangun peradaban yang tenang, damai, dan penuh berkah.
+                </p>
+                <div class="hero-actions">
+                    <a href="{{ url_for('kajian') }}" class="btn-primary">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                        Jadwal Kajian
+                    </a>
+                    <a href="{{ url_for('donasi') }}" class="btn-ghost">
+                        <span class="material-symbols-outlined">favorite</span>
+                        Donasi
+                    </a>
+                </div>
+            </div>
+
+            <!-- Jadwal Sholat Card -->
+            <div class="prayer-card" id="prayer-card">
+                <!-- Header: Tanggal + Lokasi -->
+                <div class="prayer-card-header">
+                    <div class="prayer-date-info">
+                        <span class="material-symbols-outlined prayer-loc-icon">location_on</span>
+                        <div>
+                            <div class="prayer-city" id="prayer-city">Mendeteksi lokasi…</div>
+                            <div class="prayer-date" id="prayer-date">—</div>
+                        </div>
+                    </div>
+                    <div class="prayer-countdown-wrap">
+                        <div class="prayer-next-label">Menuju <span id="next-prayer-name">—</span></div>
+                        <div class="prayer-countdown" id="prayer-countdown">--:--:--</div>
+                    </div>
+                </div>
+
+                <!-- Daftar Waktu Sholat -->
+                <div class="prayer-times-grid" id="prayer-times-grid">
+                    <!-- Diisi oleh JS -->
+                    <div class="prayer-time-item skeleton"></div>
+                    <div class="prayer-time-item skeleton"></div>
+                    <div class="prayer-time-item skeleton"></div>
+                    <div class="prayer-time-item skeleton"></div>
+                    <div class="prayer-time-item skeleton"></div>
+                </div>
+
+                <!-- Hijri date -->
+                <div class="prayer-hijri" id="prayer-hijri">—</div>
+            </div>
+
+        </div>
     </div>
 </section>
 
 <!-- Artikel Terbaru -->
 <section id="artikel" class="section">
     <div class="container">
-        <h2 class="section-title">Artikel & Hikmah Terbaru</h2>
+        <h2 class="section-title">Artikel &amp; Hikmah Terbaru</h2>
         <div class="grid">
             {% for post in recent_posts %}
             <div class="post-card">
