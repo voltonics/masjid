@@ -14,6 +14,20 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../../../static/css/style.css">
+
+    <!-- ⚡ Anti-FOUC: Apply theme BEFORE render to prevent flash -->
+    <!-- Priority: localStorage → system preference → dark (default) -->
+    <script>
+        (function () {
+            var stored = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            // Default to dark if no preference stored
+            var isDark = stored ? (stored === 'dark') : (prefersDark !== false ? true : false);
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            // If nothing stored yet, persist the default choice
+            if (!stored) localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        })();
+    </script>
 </head>
 <body class="">
 
@@ -27,17 +41,29 @@
                 <span class="logo-arab">لامطمئنة</span>
             </a>
 
-            <button class="hamburger" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <!-- Mobile: theme toggle + hamburger side by side -->
+            <div class="mobile-nav-actions">
+                <button id="theme-toggle-btn-mobile" class="theme-btn-mobile" aria-label="Ganti tema" title="Ganti tema">
+                    <span class="material-symbols-outlined" id="theme-icon-mobile">light_mode</span>
+                </button>
+                <button class="hamburger" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
 
             <ul class="nav-links">
                 <li><a href="../../../index.html" class="nav-link">Beranda</a></li>
                 <li><a href="../../../kajian/index.html" class="nav-link">Kajian</a></li>
                 <li><a href="../../index.html" class="nav-link">Artikel</a></li>
                 <li><a href="../../../donasi/index.html" class="nav-link">Donasi</a></li>
+                <!-- Desktop: theme toggle as last nav item -->
+                <li class="nav-theme-item">
+                    <button id="theme-toggle-btn" aria-label="Ganti tema" title="Ganti tema">
+                        <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
@@ -117,13 +143,6 @@
                 <div class="footer-col">
                     <h3 style="margin-bottom: 1rem; color: var(--soft-gold); font-family: var(--font-heading);">Masjid Jami Al-Muthma'innah</h3>
                     <p style="color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; line-height: 1.8;">Pusat harmoni, ibadah, dan pencerahan ummat. Membangun generasi rabbani yang berakhlak mulia melalui majelis ilmu dan kepedulian sosial.</p>
-                    <div class="theme-switch-wrapper" style="justify-content: flex-start;">
-                        <span style="font-size: 0.875rem; color: rgba(255,255,255,0.8);">Mode Gelap</span>
-                        <label class="theme-switch" for="checkbox">
-                            <input type="checkbox" id="checkbox" />
-                            <div class="slider round"></div>
-                        </label>
-                    </div>
                 </div>
                 
                 <div class="footer-col">
@@ -131,7 +150,7 @@
                     <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
                         <li><a href="../../../index.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--soft-gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Beranda</a></li>
                         <li><a href="../../../kajian/index.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--soft-gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Jadwal Kajian</a></li>
-                        <li><a href="../../index.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--soft-gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Artikel & Hikmah</a></li>
+                        <li><a href="../../index.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--soft-gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Artikel &amp; Hikmah</a></li>
                         <li><a href="../../../donasi/index.html" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--soft-gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Layanan Donasi</a></li>
                     </ul>
                 </div>
